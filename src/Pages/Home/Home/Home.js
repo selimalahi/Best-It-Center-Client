@@ -4,7 +4,7 @@ import BrandCarousel from '../../Shared/BrandCarousel/BrandCarousel';
 const Home = () => {
     return (
         <div>
-            <BrandCarousel></BrandCarousel>
+            {/* <BrandCarousel></BrandCarousel> */}
         </div>
     );
 };
