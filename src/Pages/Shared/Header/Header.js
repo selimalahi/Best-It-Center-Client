@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import image from './logo.png';
 import './Header.css';
 import BrandCarousel from '../BrandCarousel/BrandCarousel';
-import Footer from '../Footer/Footer';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -20,8 +20,8 @@ const Header = () => {
                         <Nav className="me-auto">
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets">Home</Nav.Link>
-                            <Nav.Link href="#deets">Courses</Nav.Link>
+                            <Nav.Link><Link to='/'>Home</Link></Nav.Link>
+                            <Nav.Link><Link to='/courses'>Courses</Link></Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
                                 FAQ
                             </Nav.Link>
@@ -34,12 +34,7 @@ const Header = () => {
                 </Container>
 
             </Navbar>
-            <div>
-                <BrandCarousel></BrandCarousel>
-            </div>
-          <div>
-            <Footer></Footer>
-          </div>
+                    
         </div>
     );
 };

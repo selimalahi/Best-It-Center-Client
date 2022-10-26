@@ -30,13 +30,16 @@ const Footer = () => {
                             <li>Crash Course</li>
 
                         </ul>
-
+                        <div>
+                           
+                        </div>
                     </Col>
                 </Row>
+                <p style={{ textAlign: 'center' }}><small>Copyright © 2022 Best It Center</small></p>
             </Container>
-            <p style={{textAlign:'center'}}><small>Copyright © 2022 Best It Center</small></p>
+
         </div>
-        
+
     );
 };
 

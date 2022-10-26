@@ -1,19 +1,20 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+
 import { Outlet } from 'react-router-dom';
-import BrandCarousel from '../Pages/Shared/BrandCarousel/BrandCarousel';
+
+import Footer from '../Pages/Shared/Footer/Footer';
 import Header from '../Pages/Shared/Header/Header';
-import LeftSideNav from '../Pages/Shared/LeftSideNav/LeftSideNav';
-import RightSide from '../Pages/Shared/RightSide/RightSide';
+
+
 
 const Main = () => {
     return (
         <div>
             <Header></Header>
-
-            <Container>
+            <div>
                 <Outlet></Outlet>
-            </Container>
+            </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -1,9 +1,12 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const LeftSideNav = () => {
+   
     return (
         <div>
-            <h2>This is left side nav</h2>
+            <h4>All Course Category</h4>
         </div>
     );
 };
