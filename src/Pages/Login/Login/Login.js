@@ -8,7 +8,7 @@ import './Login.css';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { useContext } from 'react';
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
@@ -23,6 +23,10 @@ const Login = () => {
 
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const from =location.state?.from?.pathname || '/';
 
 
     const handelGoogleSignIn = () => {
@@ -45,7 +49,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate('/')
+                navigate(from, {replace : true})
 
             })
             .catch(error => {

@@ -38,7 +38,7 @@ const Header = () => {
                             <Nav.Link eventKey={2} href="#memes">
                                 FAQ
                             </Nav.Link>
-                            <Nav.Link href="#deets">Blog</Nav.Link>
+                            <Nav.Link><Link to='/blog'>Blog</Link></Nav.Link>
                             {/* <Nav.Link><Link to='/login'>Login</Link></Nav.Link> */}
                             <Nav.Link href="#deets">
                                 {
@@ -56,11 +56,11 @@ const Header = () => {
                             </Nav.Link>
                             <Nav.Link href="#deets">
                                 {user?.photoURL ?
-                                    <Image
-                                        style={{ height: '30px' }}
-                                        roundedCircle
-                                        src={user?.photoURL}>
-                                    </Image>
+                                   <abbr title={user?.displayName}> <Image
+                                   style={{ height: '30px' }}
+                                   roundedCircle
+                                   src={user?.photoURL}>
+                               </Image></abbr>
                                     : <FaUser></FaUser>
                                 }
                             </Nav.Link>
