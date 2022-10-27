@@ -7,19 +7,23 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import './Login.css';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { useContext } from 'react';
-import { GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
 const Login = () => {
 
+    const [error, setError] = useState('');
+
     const { providerLogin } = useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider()
+    const googleProvider = new GoogleAuthProvider();
+    const GithubProvider = new GithubAuthProvider();
 
     const { signIn } = useContext(AuthContext);
-    const navigate =useNavigate();
-    
+    const navigate = useNavigate();
+
 
     const handelGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -40,10 +44,21 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError('');
                 navigate('/')
-                
+
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setError(error.message);
+            })
+    }
+
+    const handelGithubSignIn =() =>{
+        signInWithPopup(auth, GithubProvider)
+        .then(result => {
+            const user =result.user;
+        })
     }
     return (
         <div className='login-container'>
@@ -51,7 +66,7 @@ const Login = () => {
                 <Button onClick={handelGoogleSignIn} className='mb-2' variant="outline-primary"> Login with Google</Button><br />
 
                 <h4 className='mb-2 '>OR</h4>
-                <Button className='' variant="outline-dark"> Login with Github</Button>
+                <Button onClick={handelGithubSignIn} className='' variant="outline-dark"> Login with Github</Button>
             </ButtonGroup>
             {/* <div className='btn'>
                 <ButtonGroup vertical>
@@ -77,7 +92,11 @@ const Login = () => {
                 <Button className='w-100' variant="primary" type="submit">
                     Login
                 </Button>
+                <Form.Text className="text-danger">
+                    {error}
+                </Form.Text>
             </Form>
+            <p>Don't have an account? Please <Link to='/register'> Register</Link></p>
 
         </div>
     );
