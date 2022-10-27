@@ -40,7 +40,7 @@ const Category = () => {
                                                     <p><small>Price : {cat.price}</small></p>
                                                 </div>
                                             </div>
-                                            <Link to={`/cat/${cat._id}`} className='btn btn-primary'>Details</Link>
+                                            <Link to={`/course/${cat._id}`} className='btn btn-primary'>Details</Link>
                                         </div>
 
 
