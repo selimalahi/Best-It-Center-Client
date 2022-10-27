@@ -9,12 +9,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { Button, Image } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const Header = () => {
-    
-    const { user, logOut} = useContext(AuthContext)
-   
+
+    const { user, logOut } = useContext(AuthContext)
+
 
     const handleLogOut = () => {
         logOut()
@@ -49,22 +49,40 @@ const Header = () => {
                                         </>
                                         :
                                         <>
-                                            <Link className='mx-2'to='/login'>Login</Link>
+                                            <Link className='mx-2' to='/login'>Login</Link>
                                             <Link to='/register'>Register</Link>
                                         </>
                                 }
                             </Nav.Link>
                             <Nav.Link href="#deets">
                                 {user?.photoURL ?
-                                   <abbr title={user?.displayName}> <Image
-                                   style={{ height: '30px' }}
-                                   roundedCircle
-                                   src={user?.photoURL}>
-                               </Image></abbr>
+                                    <abbr title={user?.displayName}> <Image
+                                        style={{ height: '30px' }}
+                                        roundedCircle
+                                        src={user?.photoURL}>
+                                    </Image></abbr>
                                     : <FaUser></FaUser>
                                 }
                             </Nav.Link>
-                            {/* <Nav.Link><Link to='/register'>Register</Link></Nav.Link> */}
+                            <>
+                                <style type="text/css">
+                                    {`
+                                     .btn-flat {
+                                      background-color: purple;
+                                      color: white;
+                                           }
+
+                                 .btn-xxl {
+                                   padding: 1rem 1rem;
+                                   font-size: 1.5rem;
+                                          }
+                                  `}
+                                </style>
+
+                                <Button variant="flat" size="lg">
+                                    light/dark
+                                </Button>
+                            </>
 
                         </Nav>
                     </Navbar.Collapse>

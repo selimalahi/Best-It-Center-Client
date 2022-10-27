@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
+import './Course.css';
 
 const Course = () => {
   const courses = useLoaderData();
@@ -17,10 +18,10 @@ const Course = () => {
     <div>
       <div className='container'>
         <div className='row'>
-          <div className='col-md-4'>
+          <div className='col-md-4 '>
             <h4>Course Categories</h4>
             {
-              categories.map((cat, index) => <h6 key={index}><Link to={`/category/${cat.id}`}>{cat.name}</Link></h6>)
+              categories.map((cat, index) => <h6  key={index}><Link to={`/category/${cat.id}`}>{cat.name}</Link></h6>)
             }
           </div>
           <div className='col-md-8'>

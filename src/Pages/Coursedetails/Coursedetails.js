@@ -1,20 +1,26 @@
 import React from 'react';
+import './Coursedetails.css';
 import { Button, Container } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
+import Pdf from "react-to-pdf";
 
 
-import './Coursedetails.css';
+const ref = React.createRef();
+
+
+
 
 const Coursedetails = () => {
+
     const coursedetails = useLoaderData();
     const { _id, title, course_hours, instructor, price, image_url, description, requirements, course_feature } = coursedetails;
-    
-   
+
+
 
     return (
         <div>
             <Container>
-                <div className='card-body'>
+                <div className='card-body' ref={ref}>
 
                     <img src={image_url} style={{ height: '250px', width: '100%' }} alt="" />
                     <div className='d-flex justify-between'>
@@ -29,9 +35,12 @@ const Coursedetails = () => {
                     <p> Requirements : {requirements}</p>
                     <p> Course_feature : {course_feature.map((cf, index) => <h6 key={index}> {index + 1} {cf}</h6>)}</p>
 
+                    <div>
+                        <Pdf targetRef={ref} filename="code-example.pdf">
+                            {({ toPdf }) => <Button onClick={toPdf}>Generate Pdf</Button>}
+                        </Pdf>
+                    </div>
                 </div>
-
-                <button className='btn btn-primary'>Generate pdf</button>
 
 
             </Container>
