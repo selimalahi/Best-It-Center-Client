@@ -60,9 +60,10 @@ export const routes = createBrowserRouter([
             }
 
         ]
-
-
-
-    }
+       
+      
+    },
+    { path: '*', element: <div className="text-center mt-10">This Route Not Found</div>}
+  
 
 ])
