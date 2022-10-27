@@ -55,10 +55,17 @@ const Login = () => {
     }
 
     const handelGithubSignIn =() =>{
-        signInWithPopup(auth, GithubProvider)
+        providerLogin(GithubProvider)
         .then(result => {
             const user =result.user;
+            console.log(user);
+            
+
         })
+        .catch(error =>{
+            console.error('error', error)
+        })
+
     }
     return (
         <div className='login-container'>

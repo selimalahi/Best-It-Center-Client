@@ -9,9 +9,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { Button, Image } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Header = () => {
+    
     const { user, logOut} = useContext(AuthContext)
+   
 
     const handleLogOut = () => {
         logOut()
