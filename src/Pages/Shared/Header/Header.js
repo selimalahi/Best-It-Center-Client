@@ -4,10 +4,20 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import image from './logo.png';
 import './Header.css';
-import BrandCarousel from '../BrandCarousel/BrandCarousel';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { Button, Image } from 'react-bootstrap';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+    const { user, logOut} = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
 
         <div>
@@ -26,7 +36,32 @@ const Header = () => {
                                 FAQ
                             </Nav.Link>
                             <Nav.Link href="#deets">Blog</Nav.Link>
-                            <Nav.Link href="#deets">Login</Nav.Link>
+                            {/* <Nav.Link><Link to='/login'>Login</Link></Nav.Link> */}
+                            <Nav.Link href="#deets">
+                                {
+                                    user?.uid ?
+                                        <>
+                                            <span>{user?.displayName}</span>
+                                            <button className='btn-signout' variant="light" onClick={handleLogOut}>Logout</button>
+                                        </>
+                                        :
+                                        <>
+                                            <Link className='mx-2'to='/login'>Login</Link>
+                                            <Link to='/register'>Register</Link>
+                                        </>
+                                }
+                            </Nav.Link>
+                            <Nav.Link href="#deets">
+                                {user?.photoURL ?
+                                    <Image
+                                        style={{ height: '30px' }}
+                                        roundedCircle
+                                        src={user?.photoURL}>
+                                    </Image>
+                                    : <FaUser></FaUser>
+                                }
+                            </Nav.Link>
+                            {/* <Nav.Link><Link to='/register'>Register</Link></Nav.Link> */}
 
                         </Nav>
                     </Navbar.Collapse>
@@ -34,7 +69,7 @@ const Header = () => {
                 </Container>
 
             </Navbar>
-                    
+
         </div>
     );
 };

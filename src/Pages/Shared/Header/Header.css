@@ -3,3 +3,10 @@
     border-radius: 40%; 
     margin-right: 10px;
 }
+.btn-signout{
+    margin-left: 10px;
+    background-color: #0B5ED7;
+    padding: 2px;
+    border-radius: 10px;
+    color: white;
+}
