@@ -29,25 +29,25 @@ export const routes = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://fullstack-server-side.vercel.app/category/${params.id}`)
             },
 
             {
                 path: '/courses',
                 element: <Course></Course>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://fullstack-server-side.vercel.app/courses')
 
             },
             {
                 path: '/course/:id',
                 element: <Coursedetails></Coursedetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://fullstack-server-side.vercel.app/course/${params.id}`)
 
             },
             {
                 path: '/course-checkout/:id',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://fullstack-server-side.vercel.app/course/${params.id}`)
 
             },
             {
